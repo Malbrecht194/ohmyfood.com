@@ -1,0 +1,415 @@
+@charset "UTF-8";
+/* --- Style de la page ---*/
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  all: unset;
+}
+
+/*Liens*/
+a {
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes slideup {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes disparition {
+  from {
+    opacity: 1;
+  }
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes loading {
+  0% {
+    margin-top: 16px;
+    height: 94px;
+  }
+  50%, 100% {
+    margin-top: 32px;
+    height: 64px;
+  }
+}
+/*Header*/
+.header {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1803921569);
+  display: flex;
+  position: relative;
+}
+.header__logo {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  .header__logo-img {
+    width: 10rem;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .header__logo-img {
+    width: 14rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header__logo-img {
+    width: 18rem;
+  }
+}
+.header__bouton {
+  position: absolute;
+  margin: 0.5rem 0 0 1rem;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 767px) {
+  .header__bouton {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .header__bouton {
+    font-size: 34px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header__bouton {
+    font-size: 38px;
+  }
+}
+
+/*fond image menu*/
+.background {
+  background-size: cover;
+}
+@media screen and (max-width: 767px) {
+  .background {
+    height: 15rem;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .background {
+    height: 28rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .background {
+    height: 35rem;
+  }
+}
+
+.menu-titre {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Shrikhand";
+  column-gap: 2rem;
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  height: 6rem;
+  margin-top: -3rem;
+}
+.menu-titre__like {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+}
+.menu-titre__like-vide {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 32px;
+}
+.menu-titre__like-rempli {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background-image: linear-gradient(0deg, #FF79DA, #9356DC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white;
+  font-size: 32px;
+}
+.menu-titre__like:hover .menu-titre__like-vide {
+  visibility: hidden;
+}
+.menu-titre__like:hover .menu-titre__like-rempli {
+  display: inline;
+  color: transparent;
+}
+
+.menu-titre h1 {
+  font-size: 26px;
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .menu-titre h1 {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .menu-titre h1 {
+    font-size: 38px;
+  }
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto 0;
+}
+@media screen and (min-width: 1024px) {
+  main {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.carte {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin: 2rem 1rem 0;
+}
+@media screen and (min-width: 1024px) {
+  .carte {
+    margin: 2rem 0 0;
+  }
+}
+.carte__titre {
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(80, 80, 80);
+  /*Important, a réutiliser*/
+}
+.carte__titre::after {
+  display: block;
+  content: "";
+  border-bottom: solid #99E2D0;
+  width: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  .carte__titre {
+    width: 21rem;
+  }
+}
+.carte__menu {
+  border-radius: 20px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1803921569);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  overflow: hidden;
+}
+.carte__menu:nth-of-type(1) {
+  /*Important: Mettre des espaces entres les opérations*/
+  animation: 1200ms 0s both slideup;
+}
+.carte__menu:nth-of-type(2) {
+  /*Important: Mettre des espaces entres les opérations*/
+  animation: 1200ms 0.25s both slideup;
+}
+.carte__menu:nth-of-type(3) {
+  /*Important: Mettre des espaces entres les opérations*/
+  animation: 1200ms 0.5s both slideup;
+}
+.carte__menu:nth-of-type(4) {
+  /*Important: Mettre des espaces entres les opérations*/
+  animation: 1200ms 0.75s both slideup;
+}
+.carte__menu__container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /*C'est chelou mais c'est normal (bug flex)*/
+  width: 0;
+  padding: 0 0.5rem 0;
+}
+.carte__menu__container__titre {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+@media screen and (min-width: 1024px) {
+  .carte__menu__container__titre {
+    font-size: 13px;
+  }
+}
+.carte__menu__container__accompagnement {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+@media screen and (min-width: 1024px) {
+  .carte__menu__container__accompagnement {
+    font-size: 12px;
+  }
+}
+.carte__menu__prix {
+  padding: 1rem 1rem 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+@media screen and (min-width: 1024px) {
+  .carte__menu__prix {
+    font-size: 12px;
+  }
+}
+.carte__menu__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  height: 100%;
+  background-color: #99E2D0;
+  color: white;
+  width: 5rem;
+  margin-right: -5rem;
+  transition: margin 0.75s;
+}
+.carte__menu:hover .carte__menu__block {
+  margin: 0;
+}
+.carte__menu:hover .carte__menu__block__icone {
+  transform: rotate(360deg);
+  transition: transform 0.75s;
+}
+
+.commande {
+  display: flex;
+  justify-content: center;
+}
+.commande__bouton {
+  border-radius: 30px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1803921569);
+  margin-top: 0.5rem;
+  color: white;
+  background-image: linear-gradient(175deg, #FF79DA, #9356DC);
+  transition: 0.2s ease-in-out;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 5rem 0 5rem;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .commande__bouton {
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .commande__bouton {
+    padding: 1.25rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .commande__bouton {
+    padding: 1.5rem;
+  }
+}
+.commande__bouton:hover {
+  filter: brightness(1.1);
+  box-shadow: rgba(13, 13, 14, 0.1803921569) 0px 30px 50px -14px, rgba(0, 0, 0, 0.1803921569) 0px 18px 32px -20px;
+}
+@media screen and (max-width: 767px) {
+  .commande__bouton {
+    width: 10rem;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .commande__bouton {
+    width: 12rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .commande__bouton {
+    width: 14rem;
+  }
+}
+
+/*Footer*/
+footer {
+  background-color: rgb(50, 50, 50);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  padding: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto 0;
+}
+.footer__titre {
+  padding-bottom: 1rem;
+  color: white;
+  font-family: "Shrikhand";
+}
+@media screen and (max-width: 767px) {
+  .footer__titre {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .footer__titre {
+    font-size: 34px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .footer__titre {
+    font-size: 36px;
+  }
+}
+.footer__lien {
+  color: white;
+  display: flex;
+  column-gap: 1.5rem;
+}
+@media screen and (max-width: 767px) {
+  .footer__lien {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .footer__lien {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .footer__lien {
+    font-size: 22px;
+  }
+}
+.footer__lien__icone {
+  width: 0.5rem;
+}
+
+/*# sourceMappingURL=stylesMenu.css.map */
